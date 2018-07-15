@@ -1,0 +1,3 @@
+export const GET_ERRORS = 'GET_ERRORS';
+export const SHOW_SUCCESS_VIEW = 'SHOW_SUCCESS_VIEW';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';

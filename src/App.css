@@ -1,0 +1,66 @@
+html, body, #root {
+  height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  min-height: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu, .logo, .action {
+  display: flex;
+  flex: 1;
+}
+
+.menu {
+  justify-content: flex-start;
+}
+
+.logo {
+  justify-content: center;
+}
+
+.action {
+  justify-content: flex-end;
+}
+
+.main {
+  display: flex;
+  flex: 1; 
+  flex-direction: column;
+  background: lightgray;
+}
+
+.inner {
+  /* border: 1px solid white; */
+  padding: 20px;
+  margin: 20px;
+
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+}
