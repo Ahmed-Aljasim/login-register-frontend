@@ -37,13 +37,13 @@ class Register extends Component {
   };
 
   componentDidMount() {
-    if(this.props.auth.isAuthenticated) {
+    if (this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.errors) {
+    if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
       });
@@ -54,7 +54,8 @@ class Register extends Component {
     this.setState({ [e.target.id]: e.target.value })
   };
 
-  onClick = () => {
+  onSubmit = e => {
+    e.preventDefault();
     const newUser = {
       username: this.state.username,
       email: this.state.email,
@@ -73,65 +74,65 @@ class Register extends Component {
 
     const originalView = (
       <Paper elevation={1} className={classes.paperStyle}>
+        <form onSubmit={this.onSubmit}>
+          <Grid container alignItems="center" direction="column" spacing={24} className={classes.container}>
 
-        <Grid container alignItems="center" direction="column" spacing={24} className={classes.container}>
+            <Grid item>
+              <TextField onChange={this.onChange} id="username" placeholder="Username" autoComplete="off" type="text" helperText={this.state.errors.username} margin="dense" error={usernameError}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <PersonOutline />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
 
-          <Grid item>
-            <TextField onChange={this.onChange} id="username" placeholder="Username" autoComplete="off" type="text" helperText={this.state.errors.username} margin="dense" error={usernameError}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <PersonOutline />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
+            <Grid item>
+              <TextField onChange={this.onChange} id="email" placeholder="Email" autoComplete="off" type="text" helperText={this.state.errors.email} margin="dense" error={emailError}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <MailOutline />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
 
-          <Grid item>
-            <TextField onChange={this.onChange} id="email" placeholder="Email" autoComplete="off" type="text" helperText={this.state.errors.email} margin="dense" error={emailError}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <MailOutline />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
+            <Grid item>
+              <TextField onChange={this.onChange} id="password" placeholder="Password" autoComplete="off" type="password" helperText={this.state.errors.password} margin="dense" error={passwordError}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <LockOutline />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
 
-          <Grid item>
-            <TextField onChange={this.onChange} id="password" placeholder="Password" autoComplete="off" type="password" helperText={this.state.errors.password} margin="dense" error={passwordError}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <LockOutline />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
+            <Grid item>
+              <TextField onChange={this.onChange} id="password2" placeholder="Confirm Password" autoComplete="off" type="password" helperText={this.state.errors.password2} margin="dense" error={password2Error}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Lock />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
 
-          <Grid item>
-            <TextField onChange={this.onChange} id="password2" placeholder="Confirm Password" autoComplete="off" type="password" helperText={this.state.errors.password2} margin="dense" error={password2Error}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Lock />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Button variant='outlined' color="secondary" onClick={this.onClick}>
-              Register
+            <Grid item>
+              <Button variant='outlined' color="secondary" type="submit">
+                Register
             </Button>
+            </Grid>
+
           </Grid>
-
-        </Grid>
-
+        </form>
       </Paper>
     );
 
