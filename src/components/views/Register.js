@@ -19,14 +19,15 @@ import { compose } from 'recompose';
 const styles = theme => ({
   paperStyle: {
     padding: 20,
-    Width: 270,
+    width: 270,
     margin: 10
   },
   container: {
-    border: '1px solid lightgray'
+    border: '1px solid lightgray',
+    borderRadius: 3
   },
   width: {
-    Width: 260
+    width: 260
   },
 });
 
