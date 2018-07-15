@@ -16,12 +16,16 @@ import { compose } from 'recompose';
 const styles = theme => ({
   paperStyle: {
     padding: 20,
-    width: 220,
+    width: 270,
     margin: 10
   },
   container: {
-    border: '1px solid lightgray'
-  }
+    border: '1px solid lightgray',
+    borderRadius: 3
+  },
+  width: {
+    width: 260
+  },
 });
 
 class Login extends Component {
@@ -73,7 +77,7 @@ class Login extends Component {
           <Grid container alignItems="center" direction="column" spacing={24} className={classes.container}>
 
             <Grid item>
-              <TextField onChange={this.onChange} id="email" placeholder="Email" autoComplete="off" type="text" helperText={this.state.errors.email} margin="dense" error={emailError}
+              <TextField className={classes.width} onChange={this.onChange} id="email" placeholder="Email" autoComplete="off" type="text" helperText={this.state.errors.email} margin="dense" error={emailError}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -85,7 +89,7 @@ class Login extends Component {
             </Grid>
 
             <Grid item>
-              <TextField onChange={this.onChange} id="password" placeholder="Password" autoComplete="off" type="password" helperText={this.state.errors.password} margin="dense" error={passwordError}
+              <TextField className={classes.width} onChange={this.onChange} id="password" placeholder="Password" autoComplete="off" type="password" helperText={this.state.errors.password} margin="dense" error={passwordError}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
