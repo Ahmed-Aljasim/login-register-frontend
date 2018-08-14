@@ -6,7 +6,7 @@ import { GET_ERRORS, SHOW_SUCCESS_VIEW, SET_CURRENT_USER } from './types';
 // Register user
 export const registerUser = userData => dispatch => {
   axios
-    .post('http://localhost:5000/api/users/register', userData)
+    .post('/api/users/register', userData)
     .then(res => 
       dispatch({
         type: SHOW_SUCCESS_VIEW
@@ -23,7 +23,7 @@ export const registerUser = userData => dispatch => {
 // Login user
 export const loginUser = userData => dispatch => {
   axios
-    .post('http://localhost:5000/api/users/login', userData)
+    .post('/api/users/login', userData)
     .then(res => {
       // Save to local storage
       const { token } = res.data;

@@ -15,6 +15,8 @@ import Lock from '@material-ui/icons/Lock';
 import Grid from '@material-ui/core/Grid';
 import isEmpty from '../../validation/is-empty';
 import { compose } from 'recompose';
+import Typography from '@material-ui/core/Typography';
+import Spinner from './Spinner';
 
 const styles = theme => ({
   paperStyle: {
@@ -37,7 +39,8 @@ class Register extends Component {
     email: '',
     password: '',
     password2: '',
-    errors: {}
+    errors: {},
+    loading: false
   };
 
   componentDidMount() {
@@ -52,6 +55,7 @@ class Register extends Component {
         errors: nextProps.errors
       });
     }
+    this.setState({loading: false});
   }
 
   onChange = e => {
@@ -66,6 +70,7 @@ class Register extends Component {
       password: this.state.password,
       password2: this.state.password2
     }
+    this.setState({loading: true});
     this.props.registerUser(newUser);
   };
 
@@ -142,17 +147,26 @@ class Register extends Component {
 
     const successView = (
       <Paper elevation={1} className={classes.paperStyle}>
-        <Grid container alignItems="center" direction="column" spacing={24} className={classes.container}>
-          <Grid item>
-            Congrats!
-            Before you login in, please check your email to activate your account
+        <Grid container alignItems="center" direction="column" spacing={16} className={classes.container}>
+          
+          <Grid item style={{ textAlign: 'center', padding: 20 }} >
+            <Typography variant="title" color="inherit">
+              Congrats!
+            </Typography>
           </Grid>
+
+          <Grid item style={{ textAlign: 'center', padding: 20, paddingTop: 0 }} >
+            <Typography variant="body1" color="inherit">
+              Please check your email to activate your account before you login
+            </Typography>
+          </Grid>
+
         </Grid>
       </Paper>
     );
 
     return (
-      this.props.auth.successView ? successView : originalView
+      this.state.loading ? <Spinner /> : this.props.auth.successView ? successView : originalView
     )
   }
 }
